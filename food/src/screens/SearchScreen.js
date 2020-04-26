@@ -21,8 +21,8 @@ const SearchScreen = () => {
                 onTermChange={(newTerm) => setTerm(newTerm)}
                 onTermSubmit={() => searchAPI(term)}
             />
-            {errorMessage ? <Text>{errorMessage}</Text> : null}
-            <Text>We have found {results.length} results.</Text>
+            {errorMessage ? <Text style={styles.searchMessages}>{errorMessage}</Text> : null}
+            <Text style={styles.searchMessages}>We have found {results.length} results.</Text>
             <ResultsList 
                 title="Cost Effective"
                 results={filterResultsByPrice("$")}
@@ -40,7 +40,9 @@ const SearchScreen = () => {
 }
 
 const styles = StyleSheet.create({
-
+    searchMessages: {
+        marginLeft: 15
+    }
 })
 
 export default SearchScreen
