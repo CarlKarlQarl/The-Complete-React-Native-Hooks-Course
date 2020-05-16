@@ -1,12 +1,20 @@
+require("./models/User")
 const express = require("express")
 const mongoose =  require("mongoose")
+const authRoutes = require("./routes/authRoutes")
+const bodyParser = require("body-parser")
+
 
 const app = express()
+
+app.use(bodyParser.json())
+app.use(authRoutes)
 
 const mongoURI = `mongodb+srv://Karl123:PasswordPassword123@cluster0-9zazp.mongodb.net/test?retryWrites=true&w=majority`
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
+    //I added this because an error message said so
     useUnifiedTopology: true
 })
 mongoose.connection.on("connected", () => {
