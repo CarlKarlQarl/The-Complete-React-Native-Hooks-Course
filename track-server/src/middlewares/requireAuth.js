@@ -6,13 +6,17 @@ module.exports = (request, response, next) => {
     const { authorization } = request.headers
 
     if(!authorization){
-        return response.status(401).send({error: "You must be logged in."})
+        return response
+            .status(401)
+            .send({error: "You must be logged in."})
     }
 
     const token = authorization.replace("Bearer ", "")
     jwt.verify(token, "MY_SECRET_KEY", async (error, payload) => {
         if(error){
-            return response.status(401).send({error: "You must be logged in."})
+            return response
+                .status(401)
+                .send({error: "You must be logged in."})
         }
 
         const { userID } = payload

@@ -15,7 +15,9 @@ router.post("/signup", async (request, response, next) => {
         const token = jwt.sign({userID: user._id}, "MY_SECRET_KEY")
         response.send({token: token})
     } catch (error) {
-        return response.status(422).send(error.message)
+        return response
+            .status(422)
+            .send(error.message)
     }
 })
 
@@ -23,12 +25,16 @@ router.post("/signin", async (request, response, next) => {
     const { email, password } = request.body
 
     if(!email || !password){
-        return response.status(422).send({error: "Must provide email and password"})
+        return response
+            .status(422)
+            .send({error: "Must provide email and password"})
     }
 
     const user = await User.findOne({email: email})
     if(!user){
-        return response.status(422).send({error: "Email not found"})
+        return response
+            .status(422)
+            .send({error: "Email not found"})
     }
 
     try{
@@ -36,7 +42,9 @@ router.post("/signin", async (request, response, next) => {
         const token = jwt.sign({userID: user._id}, "MY_SECRET_KEY")
         response.send({token})
     }catch(error){
-        return response.status(422).send({error: "Invalid password or email"})
+        return response
+            .status(422)
+            .send({error: "Invalid password or email"})
     }
 })
 
