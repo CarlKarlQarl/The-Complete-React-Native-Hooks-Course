@@ -12,4 +12,4 @@ Displays resulting images and ratings from the Yelp API. Lots of practice with s
 Full CRUD app for this course. Blogs have a title and content, and can be created, viewed, editted, and deleted. Simple on its face, but made somewhat more complicated by with hooks, reducers, and context. I'm not terribly experienced with Redux yet, but per the author, this project recreates Redux's functionality with useContext.
 
 # track-server and jsonserver
-In progress. Will be tracking a user's movement, plotting it on a map, and keeping location data in a mongoDB database.
+API to work with the track app. Uses express, mongoose, mongoDB, and mongoDB's cloud, Handles user sign-up, log-ins with authentication, and storage and creation of users and user tracks.
