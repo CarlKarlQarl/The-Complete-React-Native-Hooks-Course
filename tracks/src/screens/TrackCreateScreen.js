@@ -5,13 +5,16 @@ import { Text } from "react-native-elements"
 import { SafeAreaView, withNavigationFocus } from "react-navigation"
 import Spacer from "../components/Spacer"
 import Map from "../components/Map"
+import TrackForm from "../components/TrackForm"
 import useLocation from "../hooks/useLocation"
 import { Context as LocationContext } from "../context/LocationContext"
 
 
 const TrackCreateScreen = ({ isFocused }) => {
-    const { addLocation } = useContext(LocationContext)
-    const [ error ] = useLocation(isFocused, addLocation)
+    const { state, addLocation } = useContext(LocationContext)
+    const [ error ] = useLocation(isFocused, (location) => {
+        addLocation(location, state.recording)
+    })
 
     return (
         <SafeAreaView forceInset={{top: "always"}}>
@@ -20,6 +23,7 @@ const TrackCreateScreen = ({ isFocused }) => {
             </Spacer>
             <Map />
             {error ? <Text>Please enable location services.</Text> : null}
+            <TrackForm />
         </SafeAreaView>
     )
 }
