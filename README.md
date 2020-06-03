@@ -13,3 +13,6 @@ Full CRUD app for this course. Blogs have a title and content, and can be create
 
 # track-server and jsonserver
 API to work with the track app. Uses express, mongoose, mongoDB, and mongoDB's cloud, Handles user sign-up, log-ins with authentication, and storage and creation of users and user tracks.
+
+# tracks
+Tracks the phone's physical location, displays it on a map, and provides an option to save that journey and view it later. Lots of useContext, useEffect, useCallback, and custom hooks, several times of navigation options (stack, bottom tab, and switch), async storage for tokens, NavigationEvents for blur and focus events, device permissions and requests, simulating user movement for testing, and of course, maps!
